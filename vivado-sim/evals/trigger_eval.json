@@ -1,0 +1,182 @@
+[
+  {
+    "query": "如何在Vivado中运行行为仿真？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to run behavioral simulation in Vivado?",
+    "should_trigger": true
+  },
+  {
+    "query": "我的后综合仿真结果和RTL仿真不一致，怎么排查？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to do post-implementation timing simulation with SDF back-annotation?",
+    "should_trigger": true
+  },
+  {
+    "query": "xsim的三步流程是什么？xvlog、xelab、xsim怎么用？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to use xelab debug level options? What is the difference between -debug typical and -debug all?",
+    "should_trigger": true
+  },
+  {
+    "query": "我想用add_force给时钟信号加激励，怎么写？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to set breakpoints and step through simulation in xsim?",
+    "should_trigger": true
+  },
+  {
+    "query": "怎么生成时序仿真网表？write_verilog -mode timesim和write_sdf怎么配合使用？",
+    "should_trigger": true
+  },
+  {
+    "query": "What is glbl.v and when do I need to include it in simulation?",
+    "should_trigger": true
+  },
+  {
+    "query": "How to integrate Questa/ModelSim with Vivado? What is compile_simlib?",
+    "should_trigger": true
+  },
+  {
+    "query": "怎么在仿真中收集SAIF文件用于功耗分析？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to dump VCD waveform from xsim simulation?",
+    "should_trigger": true
+  },
+  {
+    "query": "launch_simulation命令有哪些mode和type选项？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to configure xsim simulation properties in project mode? Like runtime, log_all_signals, debug_level?",
+    "should_trigger": true
+  },
+  {
+    "query": "我想用VCS跑Vivado设计的仿真，需要怎么设置？",
+    "should_trigger": true
+  },
+  {
+    "query": "export_simulation和launch_simulation -scripts_only有什么区别？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to add waveform signals and log all signals in xsim? log_wave and add_wave usage.",
+    "should_trigger": true
+  },
+  {
+    "query": "时序仿真报setup/hold violation怎么处理？",
+    "should_trigger": true
+  },
+  {
+    "query": "怎么在xsim中读取信号值？get_value和get_objects怎么用？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to generate post-synthesis functional simulation netlist with write_verilog -mode funcsim?",
+    "should_trigger": true
+  },
+  {
+    "query": "xelab的-transport_int_delays和-pulse_r -pulse_e选项是什么意思？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to select process corner (fast/slow) for SDF file generation?",
+    "should_trigger": true
+  },
+  {
+    "query": "怎么创建额外的仿真fileset？sim_1以外还能加sim_2吗？",
+    "should_trigger": true
+  },
+  {
+    "query": "What SystemVerilog features does xsim support? DPI-C, constrained random, assertions?",
+    "should_trigger": true
+  },
+  {
+    "query": "open_saif和read_saif配合report_power的完整流程是什么？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to use xsim multithreading? xelab -mt option.",
+    "should_trigger": true
+  },
+  {
+    "query": "我的timing仿真报undefined module glbl错误怎么解决？",
+    "should_trigger": true
+  },
+  {
+    "query": "How to use Xcelium simulator with Vivado designs?",
+    "should_trigger": true
+  },
+  {
+    "query": "xsim中怎么设置条件断点？add_bp -condition的用法？",
+    "should_trigger": true
+  },
+  {
+    "query": "如何优化Vivado综合策略来提高时序？",
+    "should_trigger": false
+  },
+  {
+    "query": "How to write XDC timing constraints for clock definition?",
+    "should_trigger": false
+  },
+  {
+    "query": "怎么设置false path约束？",
+    "should_trigger": false
+  },
+  {
+    "query": "How to run place_design with congestion-aware directives?",
+    "should_trigger": false
+  },
+  {
+    "query": "写一个Vivado TCL脚本来自动创建工程并添加源文件",
+    "should_trigger": false
+  },
+  {
+    "query": "How to use set_multicycle_path constraint?",
+    "should_trigger": false
+  },
+  {
+    "query": "怎么选择phys_opt_design的directive？",
+    "should_trigger": false
+  },
+  {
+    "query": "How to configure Vivado synthesis attributes like KEEP_HIERARCHY?",
+    "should_trigger": false
+  },
+  {
+    "query": "我的设计route_design阶段congestion很严重怎么办？",
+    "should_trigger": false
+  },
+  {
+    "query": "How to do incremental implementation with read_checkpoint -incremental?",
+    "should_trigger": false
+  },
+  {
+    "query": "写一个Verilog的FIFO模块",
+    "should_trigger": false
+  },
+  {
+    "query": "How to use create_clock and create_generated_clock in XDC?",
+    "should_trigger": false
+  },
+  {
+    "query": "帮我写一个Python脚本解析Vivado的timing report",
+    "should_trigger": false
+  },
+  {
+    "query": "What is the difference between synth_design -directive options?",
+    "should_trigger": false
+  },
+  {
+    "query": "How to set IOSTANDARD and PACKAGE_PIN constraints?",
+    "should_trigger": false
+  }
+]
