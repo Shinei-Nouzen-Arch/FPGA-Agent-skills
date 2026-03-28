@@ -1,69 +1,69 @@
-# Vivado FPGA Development Skills
+# Vivado/Vitis FPGA Development Skills
 
-7 个 skill 覆盖 AMD Vivado 2025.2 FPGA 开发全流程（RTL → Bitstream），基于官方 UG 文档构建。
+8 skills covering AMD Vivado/Vitis 2025.2 FPGA development (RTL → Bitstream + HLS), based on official UG documentation.
 
-## FPGA 开发流程对应
-
-```
-RTL设计 ──→ 综合 ──→ 约束 ──→ 实现 ──→ 时序分析 ──→ 编程调试
-             synth   constraints  impl    analysis     debug
-
-仿真验证（贯穿全流程）sim
-TCL自动化（贯穿全流程）tcl
-```
-
-## Skill 一览
-
-| Skill | 文档来源 | 定位 | 核心内容 |
-|-------|---------|------|---------|
-| **vivado-synth** | UG901 | 综合决策 | 综合策略/指令选择、属性配置(RAM_STYLE/USE_DSP/SHREG等)、资源推断控制、FSM编码、OOC综合、增量综合、RTL Linting |
-| **vivado-constraints** | UG903 | 约束编写 | 时钟定义、I/O延迟、时序例外(false_path/multicycle)、CDC约束、物理约束、XDC优先级规则、约束调试 |
-| **vivado-impl** | UG904 | 实现优化 | opt/place/phys_opt/route_design指令选择、拥塞分析、增量实现、ECO流程、运行策略(Performance/Congestion/Area) |
-| **vivado-analysis** | UG906 | 报告解读 | report_timing解读、Slack计算、QoR评分(1-5)、QoR建议工作流、design_analysis(Rent/拥塞)、时序收敛决策树、Waiver |
-| **vivado-debug** | UG908 | 调试策略 | ILA/VIO/JTAG-to-AXI选型、mark_debug流程、ILA配置(深度/触发/Cross-Trigger)、Versal调试架构、硬件编程、错误排查 |
-| **vivado-sim** | UG900 | 仿真验证 | 行为/后综合/后实现仿真、xsim三步流、第三方仿真器集成、SAIF/VCD功耗仿真、SDF时序仿真 |
-| **vivado-tcl** | UG835+UG892 | TCL执行 | Project/Non-Project模式、完整命令速查、IP Integrator BD、Debug Core插入、Hardware编程模板 |
-
-## 架构设计
-
-每个 skill 采用三层信息结构：
+## FPGA Development Flow
 
 ```
-SKILL.md      → 决策指南（何时用什么、策略选择表、决策树）
-REFERENCE.md  → 命令语法（完整参数、属性表、值域）
-examples/     → 代码示例（按需读取，不污染上下文）
+HLS C/C++ ──→ RTL Design ──→ Synthesis ──→ Constraints ──→ Implementation ──→ Timing Analysis ──→ Programming/Debug
+vitis-hls                      synth        constraints       impl              analysis            debug
+
+Simulation (throughout): sim
+TCL Automation (throughout): tcl
 ```
 
-- **SKILL.md** 在 skill 触发时自动加载，聚焦决策知识
-- **REFERENCE.md** 在 skill 触发时自动加载，提供精确语法
-- **examples/** 不自动加载，通过索引表按需 Read
+## Skills Overview
 
-## Skill 间交叉引用
+| Skill | Documentation | Focus | Core Content |
+|-------|--------------|-------|--------------|
+| **vitis-hls-synthesis** | UG1399 | HLS Synthesis | Pragma optimization, interface config, dataflow/pipeline, burst optimization, synthesis report analysis |
+| **vivado-synth** | UG901 | Synthesis | Strategy selection, attributes (RAM_STYLE/USE_DSP/SHREG), resource inference, FSM encoding, OOC/incremental synthesis |
+| **vivado-constraints** | UG903 | Constraints | Clock definition, I/O delay, timing exceptions (false_path/multicycle), CDC, physical constraints, XDC debugging |
+| **vivado-impl** | UG904 | Implementation | opt/place/phys_opt/route directives, congestion analysis, incremental implementation, ECO flow, run strategies |
+| **vivado-analysis** | UG906 | Report Analysis | report_timing interpretation, slack calculation, QoR scoring (1-5), QoR suggestions, timing closure strategies |
+| **vivado-debug** | UG908 | Debug Strategy | ILA/VIO/JTAG-to-AXI selection, mark_debug flow, ILA config, Versal debug architecture, hardware programming |
+| **vivado-sim** | UG900 | Simulation | Behavioral/post-synth/post-impl simulation, xsim flow, third-party simulator integration, SAIF/VCD power simulation |
+| **vivado-tcl** | UG835+UG892 | TCL Execution | Project/Non-Project mode, command reference, IP Integrator BD, debug core insertion, hardware programming |
+
+## Architecture
+
+Each skill uses a three-layer structure:
 
 ```
-vivado-synth ──→ vivado-tcl (执行)
-vivado-constraints ──→ vivado-tcl (执行), vivado-analysis (报告解读)
-vivado-impl ──→ vivado-tcl (执行), vivado-synth (综合), vivado-constraints (约束), vivado-analysis (分析)
-vivado-analysis ──→ vivado-tcl (执行), vivado-constraints (约束修改), vivado-impl (策略调整)
-vivado-debug ──→ vivado-tcl (执行), vivado-impl (策略), vivado-analysis (时序)
-vivado-sim ──→ vivado-tcl (执行)
-vivado-tcl ──→ vivado-debug (调试决策), vivado-analysis (分析)
+SKILL.md      → Decision guide (when to use what, strategy tables, decision trees)
+REFERENCE.md  → Command syntax (complete parameters, attribute tables, value ranges)
+examples/     → Code examples (loaded on demand)
 ```
 
-## Examples 目录
+- **SKILL.md** auto-loads on skill trigger, focuses on decision knowledge
+- **REFERENCE.md** auto-loads on skill trigger, provides precise syntax
+- **examples/** not auto-loaded, read via index as needed
 
-| Skill | 目录 | 内容 |
-|-------|------|------|
-| vivado-synth | `examples/` | 64个 Verilog/SV 文件 — UG901 HDL编码模板(RAM/DSP/ROM/SRL/FSM等) |
-| vivado-impl | `examples/ug906/` | 3组 before/after RTL — report_qor_suggestions 优化示例 |
+## Cross-References Between Skills
 
-## 尚未覆盖
+```
+vitis-hls-synthesis ──→ vivado-impl (implementation), vivado-analysis (timing), vivado-constraints (top-level)
+                    ──→ vivado-sim (RTL simulation), vivado-debug (hardware debug), vivado-tcl (automation)
 
-| 缺口 | 文档 | 内容 |
-|------|------|------|
-| vivado-ip | UG994+UG896 | BD架构决策、AXI协议选型、IP配置、PS-PL接口 |
-| vitis-hls | UG1399 | HLS pragma、接口综合、循环优化、C仿真/协同仿真 |
+vivado-synth ──→ vivado-tcl (execution)
+vivado-constraints ──→ vivado-tcl (execution), vivado-analysis (report interpretation)
+vivado-impl ──→ vivado-tcl (execution), vivado-synth (synthesis), vivado-constraints (constraints), vivado-analysis (analysis)
+              ──→ vitis-hls-synthesis (HLS-level optimization)
+vivado-analysis ──→ vivado-tcl (execution), vivado-constraints (constraint modification), vivado-impl (strategy adjustment)
+vivado-debug ──→ vivado-tcl (execution), vivado-impl (strategy), vivado-analysis (timing)
+              ──→ vitis-hls-synthesis (HLS debug options)
+vivado-sim ──→ vivado-tcl (execution), vitis-hls-synthesis (co-simulation)
+vivado-tcl ──→ vivado-debug (debug decisions), vivado-analysis (analysis), vitis-hls-synthesis (IP integration)
+```
 
-## 命令验证
+## Examples Directory
 
-所有 skill 中引用的 TCL 命令均通过 Vivado 2025.2 实际调用验证（`-help` 测试），确认命令存在且可用。
+| Skill | Directory | Content |
+|-------|-----------|---------|
+| vivado-synth | `examples/` | 64 Verilog/SV files — UG901 HDL coding templates (RAM/DSP/ROM/SRL/FSM) |
+| vivado-impl | `examples/ug906/` | 3 sets of before/after RTL — report_qor_suggestions optimization examples |
+| vitis-hls-synthesis | `examples/` | Design/Feature/Introductory tutorials — Official AMD HLS reference implementations |
+
+## Command Verification
+
+All TCL commands referenced in skills have been verified through Vivado 2025.2 (`-help` test) to ensure they exist and are usable.

@@ -1,0 +1,12 @@
+Example C++ code for implementing an AXI stream interface in Vitis HLS using all side channels.
+(TDATA, TKEEP, TSTRB, TLAST and TUSER)
+
+Files Included in this Package
+==================================================
+example_test.cpp
+example.cpp
+README
+
+Running the Design (edit x_hls.tcl to run synthesis)
+=================================================
+vitis-run --mode hls --tcl run_hls.tcl

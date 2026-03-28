@@ -1,0 +1,17 @@
+This example shows different variations of the Loop pipelining (inner-most loop and outer-most loop) 
+
+
+Included in this Package
+==============================
+loop_pipeline.h
+loop_pipeline.cpp
+loop_pipeline_test.cpp
+run_hls.tcl
+result.golden.dat
+README
+
+ Running the Design (edit run_hls.tcl to set $hls_exec and enable specific run steps)
+ =========================================================
+ vitis-run --mode hls --tcl run_hls.tcl
+
+
